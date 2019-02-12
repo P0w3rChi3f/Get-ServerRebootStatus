@@ -1,4 +1,4 @@
-﻿$servers = Get-ADComputer -Filter 'OperatingSystem -like "Windows Server *"' -SearchBase "OU=NGPE,OU=States,DC=ng,DC=ds,DC=army,DC=mil"
+﻿$servers = Get-ADComputer -Filter 'OperatingSystem -like "Windows Server *"' -SearchBase "OU=SubOU3,OU=SubOU2,OU=SubOU1,DC=SubDomain1,DC=SubDomain2,DC=SubDomain3,DC=com"
 $date = Get-Date -Format m
 
 foreach ($server in $Servers) {
@@ -26,14 +26,3 @@ foreach ($server in $Servers) {
 
 
 }
-<#
-
-Send-MailMessage -to eric.l.johnson256.civ@mail.mil, michael.a.halter.civ@mail.mil -cc james.j.honeycutt.civ@mail.mil `
- -from HoneycuttPowerShell@mail.mil `
- -Subject "Server Reboot" `
- -body "The following need to be rebooted: 
- $lockedusers" `
- -Attachments C:\AGMLogs\RebootRequired_$date.csv `
- -SmtpServer NGPEB3-MAILRELAY
-
- #>
